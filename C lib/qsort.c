@@ -60,3 +60,37 @@ int cmp_int(const void* a, const void* b)
         return 1;
     }
 }
+
+int main(int argc, char* argv[])
+{
+    int a[] = {-2, 0, 5, 1, 10, 8, 5, 4, 3, 9};
+    int len1 = sizeof(a) / sizeof(a[0]);
+    fprintf(stdout, "before sort:\n");
+    for (int i = 0; i < len1; ++i) {
+        fprintf(stdout, "%d ", a[i]);
+    }
+    fprintf(stdout, "\n");
+
+    Qsort(a, 0, len1 - 1, sizeof(a[0]), cmp_int);
+    fprintf(stdout, "after sort:\n");
+    for (int i = 0; i < len1; ++i) {
+        fprintf(stdout, "%d ", a[i]);
+    }
+    fprintf(stdout, "\n");
+
+
+    const char* b[] = {"what", "chenwei", "skyline", "wel", "dmr"};
+    int len2 = sizeof(b) / sizeof(b[0]);
+    fprintf(stdout, "before sort:\n");
+    for (int i = 0; i < len2; ++i) {
+        fprintf(stdout, "%s-->", b[i]);
+    }
+    fprintf(stdout, "\n");
+
+    Qsort(b, 0, len2 - 1, sizeof(b[0]), cmp_string);
+    fprintf(stdout, "after sort:\n");
+    for (int i = 0; i < len2; ++i) {
+        fprintf(stdout, "%s-->", b[i]);
+    }
+    fprintf(stdout, "\n");
+}
