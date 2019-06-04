@@ -39,3 +39,28 @@ int cmp_string(const void* a, const void* b)
     const char** rhs = (const char**)b;
     return strcmp(*lhs, *rhs);
 }
+
+int main(int argc, char* argv[])
+{
+    int a[] = {-2, 0, 1, 3, 4, 5, 5, 8, 9, 10};
+    int len1 = sizeof(a) / sizeof(a[0]);
+
+    int tmp = 5;
+    int* res1 = (int*)Bsearch(a, len1, sizeof(a[0]), &tmp, cmp_int);
+    if (res1 != NULL) {
+        fprintf(stdout, "found it\n");
+    } else {
+        fprintf(stdout, "Not found\n");
+    }
+
+    const char* str[] = {"chenwei", "dmr", "skyline", "wel", "what"};
+    int len2 = sizeof(str) / sizeof(str[0]);
+    const char* p = "chenwei";
+    char* res2 = (char*)Bsearch(str, len2, sizeof(str[0]), &p, cmp_string);
+    if (res2 != NULL) {
+        fprintf(stdout, "found it\n");
+    } else {
+        fprintf(stdout, "Not found\n");
+    }
+    return 0;
+}
