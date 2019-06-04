@@ -17,3 +17,25 @@ void* Bsearch(void* base, int len, int size, const void* key, int (*cmp)(const v
     }
     return NULL;
 }
+
+int cmp_int(const void* a, const void* b)
+{
+    assert(a != NULL && b != NULL);
+    const int* lhs = (const int*)a;
+    const int* rhs = (const int*)b;
+    if (*lhs < *rhs) {
+        return -1;
+    } else if (*lhs == *rhs) {
+        return 0;
+    } else {
+        return 1;
+    }
+}
+
+int cmp_string(const void* a, const void* b)
+{
+    assert(a != NULL && b != NULL);
+    const char** lhs = (const char**)a;
+    const char** rhs = (const char**)b;
+    return strcmp(*lhs, *rhs);
+}
